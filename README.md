@@ -50,7 +50,7 @@ _my_prompt() {
 PROMPT_COMMAND=_my_prompt
 ```
 
-Refer to the [bash-seafly-prompt command
+Refer to the _bash-seafly-prompt_ [command
 script](https://github.com/bluz71/bash-seafly-prompt/blob/master/command_prompt.bash)
 for a real-world usage of _git-status-fly_.
 
@@ -64,8 +64,11 @@ working directory:
 git --no-optional-locks status --porcelain=v2 --branch --show-stash --ignore-submodules -uno
 ```
 
-The output of the above `git status` command will be parsed to an output Bash or
-Zsh script, readily for sourcing, with the following environment variables:
+The result from that `git status` command will internally be parsed and be
+transformed to a series of POSIX shell environment variable statements ready for
+sourcing from a custom prompt script.
+
+The relevant environment variables will be:
 
 | Environment Variable | Description                                       | Value       |
 |----------------------|---------------------------------------------------|-------------|
