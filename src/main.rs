@@ -57,24 +57,24 @@ fn main() {
 
     println!("unset GSF_REPOSITORY");
     println!("unset GSF_BRANCH");
-    println!("unset GSF_STASH");
-    println!("unset GSF_UPSTREAM");
     println!("unset GSF_DIRTY");
     println!("unset GSF_STAGED");
+    println!("unset GSF_UPSTREAM");
+    println!("unset GSF_STASH");
     if is_git {
         println!("export GSF_REPOSITORY=1");
         println!("export GSF_BRANCH='{}'", branch_name);
-        if has_stash {
-            println!("export GSF_STASH=1");
-        }
-        if !upstream.is_empty() {
-            println!("export GSF_UPSTREAM='{}'", upstream);
-        }
         if is_dirty {
             println!("export GSF_DIRTY=1");
         }
         if is_staged {
             println!("export GSF_STAGED=1");
+        }
+        if !upstream.is_empty() {
+            println!("export GSF_UPSTREAM='{}'", upstream);
+        }
+        if has_stash {
+            println!("export GSF_STASH=1");
         }
     }
 }
