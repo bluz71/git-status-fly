@@ -41,7 +41,7 @@ _my_prompt() {
     . <(git-status-fly)
 
     if [[ -n $GSF_REPOSITORY ]]; then
-        PS1="\w $GFE_BRANCH> "
+        PS1="\w $GSF_BRANCH> "
     else
         PS1="\w> "
     fi
