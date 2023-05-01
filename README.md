@@ -31,10 +31,11 @@ Git version `2.11`, released November 2016, or later is required.
 Usage
 -----
 
-In a prompt command script source the output of _git_status_fly_ using process
-substitution.
+In your prompt script source the output of _git_status_fly_ using process
+substitution to evaluate the current Git state.
 
-An example usage in a very simple Bash prompt:
+Here is an example usage of _git-status-fly_ in a very simple Bash prompt
+script:
 
 ```bash
 _my_prompt() {
@@ -89,8 +90,8 @@ The relevant environment variables will be:
 
 - `2` Current and remote branches have diverged
 
-Note, the absence of an environment indicates falsehood, for example if
-`GSF_REPOSITORY` is unset then that signals the current directory is not a
+Note, the absence of any environment variable indicates falsehood, for example
+if `GSF_REPOSITORY` is unset then that signals the current directory is not a
 Git repository.
 
 For performance reasons, untracked files and change counts are ignored.
@@ -100,11 +101,11 @@ Recommendations
 
 Very large repositories, such as the [Linux
 kernel](https://github.com/torvalds/linux) and the [Chromium
-browser](https://github.com/chromium/chromium) will result slow `git status`
+browser](https://github.com/chromium/chromium), will result slow `git status`
 execution.
 
-For such repositories it is strongly recommended to enable the following
-repository-level configuration settings:
+For such very large repositories it is strongly recommended to enable the following
+configuration options:
 
 - `git config feature.manyFiles true`, adopt internal Git settings to improve
   performance for large repositories as [documented
