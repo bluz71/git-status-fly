@@ -115,6 +115,8 @@ configuration options:
   [documented
   here](https://github.blog/2022-06-29-improve-git-monorepo-performance-with-a-file-system-monitor)
 
+Note, as of May 2023 `fsmonitor` is implemented only for Windows and macOS.
+
 License
 -------
 
