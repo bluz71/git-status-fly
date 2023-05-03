@@ -49,8 +49,8 @@ fn main() {
             is_dirty = true;
         }
         if is_staged && is_dirty {
-            // No need to check anymore entries since both dirty and staged are in
-            // effect.
+            // Early exit, no need to check more entries since both dirty and
+            // staged are in effect.
             break;
         }
     }

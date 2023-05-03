@@ -2,10 +2,10 @@ git-status-fly
 ==============
 
 _git-status-fly_ is a [Rust](https://www.rust-lang.org) utility that runs and
-then parses `git status` into constituent POSIX shell environment variables that
-can be sourced by a Bash or Zsh script to render a fast Git-aware prompt.
+parses `git status` to constituent POSIX shell environment variables that can be
+sourced by a Bash or Zsh script to render a fast Git-aware prompt.
 
-Many custom Bash & Zsh prompts directly run and parse `git status` using shell
+Many custom Bash and Zsh prompts directly run and parse `git status` using shell
 commands. However, parsing the output of `git status` using shell commands is
 **much** slower than doing the same using optimized Rust, often twice as slow
 depending on the size of the repository.
@@ -107,15 +107,15 @@ execution.
 For such very large repositories it is strongly recommended to enable the following
 configuration options:
 
-- `git config feature.manyFiles true`, adopt internal Git settings to improve
+- `git config feature.manyFiles true` will adopt internal Git settings to improve
   performance for large repositories as [documented
   here](https://github.blog/2019-11-03-highlights-from-git-2-24/)
 
-- `git config core.fsmonitor true`, enable Git file system monitor as
+- `git config core.fsmonitor true` will enable Git file system monitor as
   [documented
   here](https://github.blog/2022-06-29-improve-git-monorepo-performance-with-a-file-system-monitor)
 
-Note, as of May 2023 `fsmonitor` is implemented only for Windows and macOS.
+Note, as of May 2023 `fsmonitor` is only available for Windows and macOS.
 
 License
 -------
