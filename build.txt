@@ -1,0 +1,13 @@
+On Linux:
+  cargo build --release
+  cp target/release/git-status-fly ~
+  cd ~
+  tar -cvf git-status-fly-linux-amd64.tar git-status-fly
+
+On macOS:
+  cargo build --release
+  cp target/release/git-status-fly ~
+  cd ~
+  tar -cvf git-status-fly-macos-arm64.tar git-status-fly
+
+Upload to GitHub Releases.
