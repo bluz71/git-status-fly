@@ -10,17 +10,17 @@ commands. However, parsing the output of `git status` using shell commands is
 **much** slower than doing the same using optimized Rust, often twice as slow
 depending on the size of the repository.
 
-Note, this utility is used to accelerate
+Note, this utility is used to accelerate the
 [bash-seafly-prompt](https://github.com/bluz71/bash-seafly-prompt).
 
 Installation
 ------------
 
-Copy the appropriate _git-status-fly_ binary, from `Releases`, to somewhere in
-the current `$PATH`.
+Copy, and untar, the appropriate _git-status-fly_ binary, from **Releases**, to
+somewhere in the current `$PATH`.
 
-Alternatively if the full Rust build chain is available, clone this repository
-and build a release via `cargo build --release` and copy the `git-status-fly`
+Alternatively if the Rust build chain is available, clone this repository and
+build a release via `cargo build --release` and copy the `git-status-fly`
 binary from `target/release` to somewhere in the current `$PATH`.
 
 Requirements
@@ -65,7 +65,7 @@ working directory:
 git --no-optional-locks status --porcelain=v2 --branch --show-stash --ignore-submodules -uno
 ```
 
-The result from that `git status` command will internally be parsed and be
+The result from that `git status` command will internally be parsed and
 transformed to a series of POSIX shell environment variable statements ready for
 sourcing from a custom prompt script.
 
@@ -80,7 +80,7 @@ The relevant environment variables will be:
 | **`GSF_UPSTREAM`**   | Remote tracking differences exist                 | Refer below |
 | **`GSF_STASH`**      | At least one stash exists                         | `1`         |
 
-`GSF_UPSTREAM` values:
+**`GSF_UPSTREAM`** values:
 
 - `0` Current and remote branches are equal
 
@@ -101,11 +101,11 @@ Recommendations
 
 Very large repositories, such as the [Linux
 kernel](https://github.com/torvalds/linux) and the [Chromium
-browser](https://github.com/chromium/chromium), will result slow `git status`
+browser](https://github.com/chromium/chromium), will result in slow `git status`
 execution.
 
 For such very large repositories it is strongly recommended to enable the following
-configuration options:
+configuration options directly in those very large repositories:
 
 - `git config feature.manyFiles true` will adopt internal Git settings to improve
   performance for large repositories as [documented
