@@ -19,7 +19,7 @@ Installation
 Copy, and untar, the appropriate _git-status-fly_ binary, from **Releases**, to
 somewhere in the current `$PATH`.
 
-Alternatively if the Rust build chain is available, clone this repository and
+Alternatively, if the Rust build chain is available, clone this repository and
 build a release via `cargo build --release` and copy the `git-status-fly`
 binary from `target/release` to somewhere in the current `$PATH`.
 
@@ -66,8 +66,8 @@ git --no-optional-locks status --porcelain=v2 --branch --show-stash --ignore-sub
 ```
 
 The result from that `git status` command will internally be parsed and
-transformed to a series of POSIX shell environment variable statements ready for
-sourcing from a custom prompt script.
+transformed to a series of POSIX shell environment variable statements, ready
+for sourcing from a custom prompt script.
 
 The relevant environment variables will be:
 
@@ -104,7 +104,7 @@ kernel](https://github.com/torvalds/linux) and the [Chromium
 browser](https://github.com/chromium/chromium), will result in slow `git status`
 execution.
 
-For such very large repositories it is strongly recommended to enable the following
+For such repositories, it is strongly recommended to enable the following
 configuration options directly in those very large repositories:
 
 - `git config feature.manyFiles true` will adopt internal Git settings to improve
