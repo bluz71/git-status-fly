@@ -18,7 +18,7 @@ fn main() {
     let mut is_dirty = false;
     let mut is_staged = false;
     let mut has_stash = false;
-    let mut upstream = String::new();
+    let mut upstream: Option<i32> = None;
 
     let output_str = String::from_utf8_lossy(&output.stdout);
 
@@ -34,13 +34,13 @@ fn main() {
             } else if line.starts_with("# branch.ab") {
                 let remote_differences = line[12..].replace(['+', '-'], "");
                 if remote_differences == "0 0" {
-                    upstream = "0".to_string();
+                    upstream = Some(0);
                 } else if remote_differences.starts_with("0 ") {
-                    upstream = "-1".to_string();
+                    upstream = Some(-1);
                 } else if remote_differences.ends_with(" 0") {
-                    upstream = "1".to_string();
+                    upstream = Some(1);
                 } else {
-                    upstream = "2".to_string();
+                    upstream = Some(2);
                 }
             }
         } else if &line[2..3] != "." {
@@ -70,8 +70,8 @@ fn main() {
         if is_staged {
             println!("export GSF_STAGED=1");
         }
-        if !upstream.is_empty() {
-            println!("export GSF_UPSTREAM='{}'", upstream);
+        if upstream.is_some() {
+            println!("export GSF_UPSTREAM={}", upstream.unwrap());
         }
         if has_stash {
             println!("export GSF_STASH=1");
