@@ -45,6 +45,9 @@ fn main() {
             }
         } else if &line[2..3] != "." {
             is_staged = true;
+            if &line[3..4] != "." {
+                is_dirty = true;
+            }
         } else {
             is_dirty = true;
         }
