@@ -2,7 +2,7 @@ git-status-fly
 ==============
 
 _git-status-fly_ is a [Rust](https://www.rust-lang.org) utility that runs and
-parses `git status` to constituent POSIX shell environment variables that can be
+parses `git status` to constituent shell environment variables that can be
 sourced by a Bash, Zsh or Fish script to render a fast Git-aware prompt.
 
 Many custom prompts directly run and parse `git status` using shell commands.
@@ -82,8 +82,8 @@ git --no-optional-locks status --porcelain=v2 --branch --show-stash --ignore-sub
 ```
 
 The result from that `git status` command will internally be parsed and
-transformed to a series of POSIX shell environment variable statements, ready
-for sourcing from a custom prompt script.
+transformed to a series of shell environment variable statements, ready for
+sourcing from a custom prompt script.
 
 The relevant environment variables will be:
 
