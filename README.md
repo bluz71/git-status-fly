@@ -3,12 +3,12 @@ git-status-fly
 
 _git-status-fly_ is a [Rust](https://www.rust-lang.org) utility that runs and
 parses `git status` to constituent POSIX shell environment variables that can be
-sourced by a Bash or Zsh script to render a fast Git-aware prompt.
+sourced by a Bash, Zsh or Fish script to render a fast Git-aware prompt.
 
-Many custom Bash and Zsh prompts directly run and parse `git status` using shell
-commands. However, parsing the output of `git status` using shell commands is
-**much** slower than doing the same using optimized Rust, often twice as slow
-depending on the size of the repository.
+Many custom prompts directly run and parse `git status` using shell commands.
+However, parsing the output of `git status` using shell commands is **much**
+slower than doing the same using optimized Rust, often twice as slow depending
+on the size of the repository.
 
 Note, this utility is used to accelerate the
 [bash-seafly-prompt](https://github.com/bluz71/bash-seafly-prompt).
@@ -31,8 +31,24 @@ Git version `2.11`, released November 2016, or later is required.
 Usage
 -----
 
-In your prompt script source the output of _git_status_fly_ using process
-substitution to evaluate the current Git state.
+In your prompt script source the output of _git_status_fly_ to evaluate the
+current Git state.
+
+In Bash or Zsh that would look as follows:
+
+```bash
+. <(git-status-fly)
+```
+
+And in Fish:
+
+```fish
+git-status-fly | source
+```
+
+Note, if using Fish just as an interactive shell, please make sure that the
+`SHELL` environment variable is set to your running version of the fish
+executable (for example `/bin/fish`).
 
 Here is an example usage of _git-status-fly_ in a very simple Bash prompt
 script:

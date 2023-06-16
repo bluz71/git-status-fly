@@ -1,3 +1,4 @@
+use std::env;
 use std::process::{Command, Stdio};
 
 fn main() {
@@ -58,26 +59,65 @@ fn main() {
         }
     }
 
-    println!("unset GSF_REPOSITORY");
-    println!("unset GSF_BRANCH");
-    println!("unset GSF_DIRTY");
-    println!("unset GSF_STAGED");
-    println!("unset GSF_UPSTREAM");
-    println!("unset GSF_STASH");
+    // Figure out whether we are running inside Fish since it uses a different
+    // syntax to set and unset environment variables.
+    let mut is_fish = false;
+    if let Ok(shell) = env::var("SHELL") {
+        if shell.contains("fish") {
+            is_fish = true;
+        }
+    }
+
+    if is_fish {
+        println!("set -e GSF_REPOSITORY");
+        println!("set -e GSF_BRANCH");
+        println!("set -e GSF_DIRTY");
+        println!("set -e GSF_STAGED");
+        println!("set -e GSF_UPSTREAM");
+        println!("set -e GSF_STASH");
+    } else {
+        println!("unset GSF_REPOSITORY");
+        println!("unset GSF_BRANCH");
+        println!("unset GSF_DIRTY");
+        println!("unset GSF_STAGED");
+        println!("unset GSF_UPSTREAM");
+        println!("unset GSF_STASH");
+    }
     if is_git {
-        println!("export GSF_REPOSITORY=1");
-        println!("export GSF_BRANCH='{}'", branch_name);
+        if is_fish {
+            println!("set -gx GSF_REPOSITORY 1");
+            println!("set -gx GSF_BRANCH '{}'", branch_name);
+        } else {
+            println!("export GSF_REPOSITORY=1");
+            println!("export GSF_BRANCH='{}'", branch_name);
+        }
         if is_dirty {
-            println!("export GSF_DIRTY=1");
+            if is_fish {
+                println!("set -gx GSF_DIRTY 1");
+            } else {
+                println!("export GSF_DIRTY=1");
+            }
         }
         if is_staged {
-            println!("export GSF_STAGED=1");
+            if is_fish {
+                println!("set -gx GSF_STAGED 1");
+            } else {
+                println!("export GSF_STAGED=1");
+            }
         }
         if upstream.is_some() {
-            println!("export GSF_UPSTREAM={}", upstream.unwrap());
+            if is_fish {
+                println!("set -gx GSF_UPSTREAM {}", upstream.unwrap());
+            } else {
+                println!("export GSF_UPSTREAM={}", upstream.unwrap());
+            }
         }
         if has_stash {
-            println!("export GSF_STASH=1");
+            if is_fish {
+                println!("set -gx GSF_STASH 1");
+            } else {
+                println!("export GSF_STASH=1");
+            }
         }
     }
 }
