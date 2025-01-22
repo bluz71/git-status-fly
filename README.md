@@ -1,9 +1,10 @@
 git-status-fly
 ==============
 
-_git-status-fly_ is a [Rust](https://www.rust-lang.org) utility that runs and
-parses `git status` to constituent shell environment variables that can be
-sourced by a Bash, Zsh or Fish script to render a fast Git-aware prompt.
+_git-status-fly_ is a utility implemented in [Rust](https://www.rust-lang.org)
+that runs and parses `git status` to constituent shell environment variables
+that can be sourced by a Bash, Zsh or Fish script to render a fast Git-aware
+prompt.
 
 Many custom prompts directly run and parse `git status` using shell commands.
 However, parsing the output of `git status` using shell commands is **much**
@@ -46,9 +47,9 @@ And in Fish:
 git-status-fly | source
 ```
 
-Note, if using Fish just as an interactive shell, please make sure that the
-`SHELL` environment variable is set to your running version of the fish
-executable (for example `/bin/fish`).
+Note, if using Fish just as an interactive shell, as opposed to a login shell,
+please make sure that the `SHELL` environment variable is set to your running
+version of the fish executable (for example `/bin/fish`).
 
 Here is an example usage of _git-status-fly_ in a very simple Bash prompt
 script:
