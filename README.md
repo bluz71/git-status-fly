@@ -86,7 +86,8 @@ The result from that `git status` command will internally be parsed and
 transformed to a series of shell environment variable statements, ready for
 sourcing from a custom prompt script.
 
-The relevant environment variables will be:
+The relevant environment variables, using the `GSF` prefix (short for Git Status
+Flag), will be:
 
 | Environment Variable | Description                                       | Value       |
 |----------------------|---------------------------------------------------|-------------|

@@ -68,6 +68,7 @@ fn main() {
         }
     }
 
+    // Git Status Flags (GSF) as environment variables.
     if is_fish {
         println!("set -e GSF_REPOSITORY");
         println!("set -e GSF_BRANCH");
