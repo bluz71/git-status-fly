@@ -59,8 +59,8 @@ fn main() {
         }
     }
 
-    // Figure out whether we are running inside Fish since it uses a different
-    // syntax to set and unset environment variables.
+    // Determine if we are running inside the Fish shell since it uses a
+    // different syntax for setting & unsetting environment variables.
     let mut is_fish = false;
     if let Ok(shell) = env::var("SHELL") {
         if shell.contains("fish") {
@@ -68,7 +68,7 @@ fn main() {
         }
     }
 
-    // Git Status Flags (GSF) as environment variables.
+    // Unset Git Status Flag (GSF) environment variables.
     if is_fish {
         println!("set -e GSF_REPOSITORY");
         println!("set -e GSF_BRANCH");
@@ -84,6 +84,9 @@ fn main() {
         println!("unset GSF_UPSTREAM");
         println!("unset GSF_STASH");
     }
+
+    // Set Git Status Flag (GSF) environment variables if we are in a Git
+    // repository.
     if is_git {
         if is_fish {
             println!("set -gx GSF_REPOSITORY 1");
